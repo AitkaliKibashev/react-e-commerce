@@ -1,38 +1,292 @@
-.App {
-  text-align: center;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+
+  font-family: "Poppins", sans-serif;
+
+  background: url(./assets/images/background.jpg) no-repeat;
+  background-size: cover;
+}
+
+.app {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.container {
+  overflow: hidden;
+  padding: 20px;
+  width: 375px;
+  height: 812px;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 70px #c7cbe3;
+  border-radius: 25px;
+  overflow-y: auto;
+}
+
+.title {
+  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-left: 20px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 48px;
+
+  color: #000000;
+}
+
+.food-card {
+  margin-bottom: 25px;
+  display: flex;
+  width: 370px;
+  height: 152px;
+
+  background: rgba(122, 179, 243, 0.2);
+  border-radius: 20px;
+}
+
+.food-card.secondary {
+  background: rgba(233, 121, 178, 0.2);
+}
+
+.food-card.cart {
+  width: 320px;
+  height: 100px;
+  align-items: flex-start;
+
+  background: transparent;
+  border-radius: 0;
+}
+
+.food-image {
+  position: relative;
+  top: -20px;
+  left: -10px;
+  width: 148px;
+}
+
+.food-image.cart {
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: auto;
+}
+
+.food-amount-on-image {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  right: 0;
+  bottom: 0;
+
+  font-weight: bold;
+  line-height: 0;
+
+  border-radius: 50%;
+  background: #000000;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.food-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.food-info {
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+.food-info.cart {
+  margin-top: 0;
+}
+
+.food-name {
+  max-width: 158px;
+  margin-bottom: 16px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+
+  color: #000000;
+}
+
+.food-name.cart {
+  max-width: 240px;
+  margin-bottom: 0;
+}
+
+.food-price {
+  margin-bottom: 17px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 32px;
+
+  color: #000000;
+}
+
+.food-price.cart {
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.add-to-card-btn {
+  cursor: pointer;
+  padding: 4px 18px;
+
+  font-family: inherit;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+
+  background: #6b00f5;
+  border-radius: 20px;
+  color: white;
+
+  transition: all 0.2s linear;
+}
+
+.add-to-card-btn:hover {
+  background: white;
+  color: #6b00f5;
+}
+
+.empty-card {
+  margin-left: 20px;
+}
+
+.card-footer {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.more-less-block {
+  width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.less-btn,
+.more-btn {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  background: #6b00f5;
+  border-radius: 20px;
+}
+
+.less-btn::after,
+.more-btn::after {
+  content: "";
+  position: relative;
+
+  width: 14px;
+  height: 14px;
+
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-radius: 2px;
+  transition: all 0.2s linear;
+}
+
+.less-btn::after {
+  transform: rotate(-45deg);
+  left: 1px;
+}
+
+.more-btn::after {
+  transform: rotate(135deg);
+  right: 1px;
+}
+
+.less-btn:hover::after {
+  left: -4px;
+}
+.more-btn:hover::after {
+  right: -4px;
+}
+
+.amount {
+  font-weight: bold;
+}
+
+.decor-line {
+  margin-bottom: 25px;
+  width: 100%;
+  height: 1px;
+
+  background: #d7d7f9;
+}
+
+.decor-line.bold {
+  margin-top: -25px;
+  margin-bottom: 40px;
+  height: 5px;
+}
+
+.price-box {
+  margin-left: auto;
+  width: 225px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtitle {
+  width: 100px;
+
+  font-weight: bold;
+  text-align: right;
+}
+
+.price {
+  min-width: 100px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 32px;
+  text-align: right;
+
+  color: #000000;
+}
+
+.price.total {
+  color: #6b00f5;
 }
